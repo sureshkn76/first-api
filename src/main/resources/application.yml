@@ -1,0 +1,5 @@
+spring:
+  data:
+    mongodb:
+       uri: mongodb+srv://mongodbuser:mongodbuser123@cluster0.2llbpgc.mongodb.net/?retryWrites=true&w=majority
+       database: mypocdb
