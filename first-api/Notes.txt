@@ -1,0 +1,18 @@
+Swagger UI:  http://localhost:8000/swagger-ui/index.html#/
+
+AWS Deployment Troubleshooting
+------------------------------
+Added the springboot jar into S3 bucket for EC2 deployment
+ a) Created new role with S3 read access and assigned that role to the EC2 instance while creating EC2 instance
+ b) For S3 bucket, provided public access
+ c) accessed ec2 instance using putty via ec2 instance's public DNS url
+ d) Add security group with inbound rule to allow All traffic (only for testing purpose). 
+    This would allow us to connect from any client machine to the instance using ssh in port 22. 
+    Also, would enable us to connect to the spring rest service using any http port
+ e) Tried to download the jar file from ec2 instance (via ssh) using wget <s3 web url>. getting connection error
+    Added the role with s3 read to ec2 instance but still getting same error for wget. 
+    Used s3 command (aws s3 cp s3://DOC-EXAMPLE-BUCKET) from EC2 to copy the jar directly into EC2 instead of using wget
+ f) springboot was deployed on port 8080 in aws though bootrstap.yml is configured with 8000
+ g) Tried to install mongodb on ec2 instance. but did not have permission to update the mongodb repo on the mongodp repo config file
+    hence connected to mongodb atlas which is mongodb cloud environment
+ h) configured mongodb to allow any ip to connect to it
